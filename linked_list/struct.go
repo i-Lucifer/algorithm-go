@@ -22,3 +22,16 @@ func CreateNode(head *LNode, len int) {
 		lNode = node
 	}
 }
+
+// 数组转链表
+func ArrToLink(arr []int) *LNode {
+	head := new(LNode)
+	lNode := head
+	for _, item := range arr {
+		node := new(LNode)
+		node.Data = item
+		lNode.Next = node
+		lNode = node
+	}
+	return head
+}

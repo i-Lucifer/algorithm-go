@@ -8,7 +8,7 @@ func PrintByFunc(head *LNode) {
 		fmt.Print(head.Data, " ")
 	}
 	if head.Next != nil {
-		PrintByFunc(head.Next) // 传递指针给下一次输出
+		PrintByFunc(head.Next) // 指针向右偏移
 	}
 }
 
@@ -18,7 +18,7 @@ func PrintNode(head *LNode) {
 	next := head.Next
 	for next != nil {
 		fmt.Print(next.Data, " ")
-		next = next.Next // 传递指针给下一次循环
+		next = next.Next // 指针向右便宜
 	}
 	fmt.Println()
 }
