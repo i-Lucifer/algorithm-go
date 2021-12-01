@@ -35,7 +35,7 @@ func InOrder(node *BNode) {
 		for node != nil {
 			stack = append(stack, node)
 			node = node.LChild
-		} // 结束是 node必定为空
+		} // 结束时 node必定为空
 
 		// 出栈
 		// 中序遍历的核心是出栈时输出
@@ -49,41 +49,19 @@ func InOrder(node *BNode) {
 
 // 后序遍历 左 右 根
 // 后序遍历 需要用双栈结构
-func PostOrder(root *BNode) {
-	// if root == nil {
-	// 	return
-	// }
-	// var stack []*BNode
-	// var stackVal []interface{}
-	// node := root
+func PostOrder(node *BNode) {
+	var stack []*BNode
+	// var preNode *BNode
+	for node != nil || len(stack) > 0 {
+		// 入栈时无须理会
+		for node != nil {
+			stack = append(stack, node)
+			node = node.LChild
+		}
 
-	// for node != nil || len(stack) > 0 {
-	// 	// 入栈
-	// 	if node != nil {
-	// 		stack = append(stack, node)
-	// 		for node.LChild != nil {
-	// 			node = node.LChild
-	// 			stack = append(stack, node)
-	// 		}
-	// 	}
-
-	// 	// 出栈
-	// 	newLen := len(stack)
-	// 	if newLen > 0 {
-	// 		node = stack[newLen-1]
-	// 		stack = stack[0 : newLen-1]
-	// 		node = pop(stack)
-
-	// 		if node.LChild != nil {
-	// 			fmt.Println(node.Data)
-	// 		}
-
-	// 		if node.RChild != nil {
-	// 			node = node.RChild
-	// 			fmt.Println(node.Data)
-	// 		} else {
-	// 			node = nil
-	// 		}
-	// 	}
-	// }
+		if len(stack) > 0 {
+			node, stack = pop(stack)
+			node = node.RChild
+		}
+	}
 }
