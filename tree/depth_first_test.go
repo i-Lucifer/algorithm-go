@@ -11,8 +11,11 @@ func TestOrder(t *testing.T) {
 	root := Array2Tree(data)
 	// fmt.Println("-----pre-----")
 	// PreOrderRec(root)
+	// PreOrder(root)
 	// fmt.Println("-----in-----")
 	// InOrderRec(root)
+	// InOrder(root)
 	// fmt.Println("-----post-----")
-	PostOrderRec(root)
+	// PostOrderRec(root)
+	PostOrder(root)
 }
