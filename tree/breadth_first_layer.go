@@ -15,8 +15,7 @@ func LayerOrder(node *BNode) {
 	queue = append(queue, node)
 
 	for len(queue) > 0 {
-		node, queue = pull(queue)
-		// for _, node := range queue { // range不能感知queue的变化，如果queue遍历完不空，再遍历一次
+		node, queue = pull(queue) // 优化说明 这里直接出队，历史版本中，使用过range来实现，见git历史
 		fmt.Println(node.Data)
 		if node.LChild != nil {
 			queue = append(queue, node.LChild)
@@ -24,8 +23,6 @@ func LayerOrder(node *BNode) {
 		if node.RChild != nil {
 			queue = append(queue, node.RChild)
 		}
-		// queue = queue[1:len(queue)]
-		// }
 	}
 }
 
