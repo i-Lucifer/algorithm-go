@@ -21,10 +21,14 @@ func PreOrder(node *BNode) {
 		// 出栈
 		// 优化1 封装pop函数，看起来更简介
 		// 优化2 取消node.RChild判空，如果是空，直接赋值，得到的也是node=nil
-		if len(stack) > 0 {
-			node, stack = pop(stack)
-			node = node.RChild
-		}
+		// 优化3 进入循环1时
+		// 		    node和stack必定有一个不为空
+		//          如果stack为空，进入循环2是，必定入栈，所以stack不为空
+		// 			如果node为空，stack不为空，所以此处不需要做stack空判断
+		// if len(stack) > 0 {
+		node, stack = pop(stack)
+		node = node.RChild
+		// }
 	}
 }
 
@@ -39,11 +43,11 @@ func InOrder(node *BNode) {
 
 		// 出栈
 		// 中序遍历的核心是出栈时输出
-		if len(stack) > 0 {
-			node, stack = pop(stack) // 弹出时，node必定不为空
-			fmt.Println(node.Data)
-			node = node.RChild
-		}
+		// if len(stack) > 0 {
+		node, stack = pop(stack) // 弹出时，node必定不为空
+		fmt.Println(node.Data)
+		node = node.RChild
+		// }
 	}
 }
 
