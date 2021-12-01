@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// 广度优先
 // 层次遍历
 // 二叉树的层次遍历一般需要借助队列
 func LayerOrder(root *BNode) {
