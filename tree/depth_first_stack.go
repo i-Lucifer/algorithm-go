@@ -63,9 +63,7 @@ func PostOrder(node *BNode) {
 			node = node.LChild
 		}
 
-		if len(stack) > 0 {
-			node, stack = pop(stack)
-			node = node.RChild
-		}
+		node, stack = pop(stack)
+		node = node.RChild
 	}
 }
