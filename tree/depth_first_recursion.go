@@ -1,15 +1,17 @@
 package tree
 
+// 深度优先
+// 深度优先遍历的本质是，按照一定的顺序访问各个节点，先，中，后的区别在于，是访问时输出，还是返回时输出
+
 import "fmt"
 
-// 深度优先
 // 先序遍历 根 左 右
 func PreOrderRec(root *BNode) {
 	if root == nil {
 		return
 	}
 
-	fmt.Println(root.Data) // 输出
+	fmt.Println(root.Data) // 先序的本质是入栈时输出
 
 	if root.LChild != nil { // 入栈
 		PreOrderRec(root.LChild)
@@ -47,5 +49,11 @@ func PostOrderRec(root *BNode) {
 	if root.RChild != nil {
 		PostOrderRec(root.RChild)
 	}
-	fmt.Println(root.Data) // 后序的本质也是调整当前节点的输出顺序，从入栈和出栈的角度来讲，是交叉的
+	// 入栈时不输出
+	// 出栈时
+	// 1. 叶子节点 无左 无右 直接出
+	// 2. 非叶子节点 无左 压入的就是右栈 出栈时也直接出右，跳4
+	// 3. 非叶子节点 如果是左节点(if.L)出栈 -> 执行右节点(if.R) -> 无右时 -> 当前节点输出
+	// 4. 非叶子节点 如果是右节点(if.R)出栈 -> 当前节点输出
+	fmt.Println(root.Data)
 }
